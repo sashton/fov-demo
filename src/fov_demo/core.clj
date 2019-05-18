@@ -206,9 +206,8 @@
   (loop []
     (when (not (:quit @world))
       (try
-        (let [w @world
-              input (s/get-key-blocking @screen)
-              w (handle-input w input)
+        (let [input (s/get-key-blocking @screen)
+              w (handle-input @world input)
               w (update-fov w)
               _ (render @screen w)]
           ;; only reset world if no exceptions were thrown
